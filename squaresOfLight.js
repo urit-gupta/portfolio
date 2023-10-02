@@ -21,7 +21,7 @@ function setup() {
   
   randomSeed(42);
   // noiseSeed(42);
-  frameRate(24);
+  frameRate(60);
   
   // initialize variables
   
