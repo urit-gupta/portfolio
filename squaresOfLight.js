@@ -58,6 +58,12 @@ function setup() {
   
   createCanvas(canvSize, canvSize);
   background(0);
+
+	const parallax = () => {
+  const { scrollY } = window;
+	origin.y -= scrollY * 0.4;
+	}
+	window.addEventListener('scroll', parallax);
   
   // createLoop({
   //   duration: TWO_PI,
@@ -102,11 +108,7 @@ function draw() {
 
 // functions
 
-const parallax = () => {
-  const { scrollY } = window;
-	origin.y -= scrollY * 0.4;
-}
-window.addEventListener('scroll', parallax);
+
 
 // OKLAB COLORS - DO NOT ALTER UNLESS U KNOW WHAT UR DOIN
 
