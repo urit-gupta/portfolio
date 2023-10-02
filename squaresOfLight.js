@@ -17,12 +17,11 @@ let offset;
 
 function setup() {
   canvSize = max(windowWidth, windowHeight);
-	// canvSize = max(windowWidth, windowHeight);
   origin = createVector(0, 0);
   
   randomSeed(42);
   // noiseSeed(42);
-  frameRate(60);
+  frameRate(24);
   
   // initialize variables
   
@@ -58,6 +57,12 @@ function setup() {
   
   createCanvas(canvSize, canvSize);
   background(0);
+
+  const parallax = () => {
+    const { scrollY } = window;
+    origin.y = (scrollY * -0.4);
+  }
+  window.addEventListener('scroll', parallax);
   
   // createLoop({
   //   duration: TWO_PI,
@@ -75,7 +80,7 @@ function draw() {
   push();
   
   // background(0);
-  // translate(origin.x, origin.y);
+  translate(origin.x, origin.y);
   
   // draw stuff
   
