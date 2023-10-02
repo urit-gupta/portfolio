@@ -118,8 +118,8 @@ function parallax() {
   let pageHeight = max(body.scrollHeight, body.offsetHeight, html_.clientHeight, html_.scrollHeight, html_.offsetHeight);
   
   let { scrollY } = window;
-  origin.y = (scrollY / (html_.scrollHeight - windowHeight)) * (windowHeight / windowWidth) * canvSize * -0.5;
-  // print(scrollY, html_.scrollHeight, windowHeight, origin.y);
+  origin.y = (scrollY / (max(html_.scrollHeight - windowHeight, 1))) * canvSize * -0.5;
+  // print(scrollY / (max(html_.scrollHeight - windowHeight, 1)));
 }
 
 function windowResized() {
