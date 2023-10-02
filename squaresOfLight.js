@@ -17,12 +17,12 @@ let offset;
 
 function setup() {
   // canvSize = min(windowWidth, windowHeight);
-	canvSize = max(windowWidth, windowHeight);
+	canvSize = max(windowWidth-1, windowHeight-1);
   origin = createVector(canvSize * 0.5, canvSize * 0.5);
   
   randomSeed(42);
   // noiseSeed(42);
-  frameRate(24);
+  frameRate(60);
   
   // initialize variables
   
