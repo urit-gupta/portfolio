@@ -57,10 +57,17 @@ function setup() {
   
   createCanvas(canvSize, canvSize);
   background(0);
+  
+  let body = document.body;
+  let html_ = document.documentElement;
 
+  let pageHeight = Math.max( body.scrollHeight, body.offsetHeight, 
+                         html_.clientHeight, html_.scrollHeight, html_.offsetHeight );
+  
   const parallax = () => {
     const { scrollY } = window;
-    origin.y = (scrollY * -0.4);
+    // origin.y = -(scrollY * 0.4);
+    origin.y = -((scrollY / pageHeight) * canvSize * 0.4);
   }
   window.addEventListener('scroll', parallax);
   
