@@ -9,14 +9,13 @@ let gridSize;
 let resolution;
 let padding;
 let paddingFactor;
-let vectors;
 let innerShades;
 let outerShades;
 let frequencies;
 let offset;
 
 function setup() {
-  canvSize = max(windowWidth, windowHeight);
+  canvSize = windowWidth;
   origin = createVector(0, 0);
   
   randomSeed(42);
@@ -29,16 +28,14 @@ function setup() {
   resolution = canvSize / gridSize;
   padding = 0.1;
   paddingFactor = 1 - padding * 2;
-  vectors = [];
   innerShades = [];
   outerShades = [];
   frequencies = [];
   offset = 0;
+  resizeWindow = false;
   
   for (let i = 0; i < gridSize; i++) {
     for (let j = 0; j < gridSize; j++) {
-      vectors.push(createVector(i * resolution, j * resolution));
-      
       let r = random(-100, 100) + 127.5;
       let g = random(-100, 100) + 127.5;
       let b = random(-100, 100) + 127.5;
@@ -73,6 +70,7 @@ function setup() {
 }
 
 function draw() {
+  resolution = canvSize / gridSize;
   push();
   
   // background(0);
@@ -82,14 +80,17 @@ function draw() {
   
   strokeWeight(2);
   
-  for (let i = 0; i < vectors.length; i++) {
+  for (let i = 0; i < outerShades.length; i++) {
+    let x = int((i / gridSize)) * resolution;
+    let y = (i % gridSize) * resolution;
+    // print(x, (i / gridSize));
     stroke(0);
     fill(outerShades[i]);
-    rect(vectors[i].x, vectors[i].y, resolution);
+    rect(x, y, resolution);
     noStroke();
     fill(innerShades[i]);
     let realOffset = sin(offset * frequencies[i]) * resolution * paddingFactor * 0.2;
-    rect(vectors[i].x + (resolution * padding) + realOffset * 0.5, vectors[i].y + (resolution * padding) + realOffset * 0.5, resolution * paddingFactor - realOffset, resolution * paddingFactor - realOffset, resolution * paddingFactor * 0.09);
+    rect(x + (resolution * padding) + realOffset * 0.5, y + (resolution * padding) + realOffset * 0.5, resolution * paddingFactor - realOffset, resolution * paddingFactor - realOffset, resolution * paddingFactor * 0.09);
   }
   
   pop();
@@ -119,11 +120,11 @@ function parallax() {
   
   let { scrollY } = window;
   origin.y = (scrollY / (max(pageHeight - windowHeight, 1))) * canvSize * -0.5;
-  // print(scrollY / (max(html_.scrollHeight - windowHeight, 1)));
+  // print(pageHeight, windowHeight, html_.clientHeight);
 }
 
 function windowResized() {
-  canvSize = max(windowWidth, windowHeight);
+  canvSize = windowWidth;
   resizeCanvas(canvSize, canvSize);
   parallax();
 }
