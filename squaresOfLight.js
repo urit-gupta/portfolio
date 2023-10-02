@@ -84,8 +84,7 @@ function draw() {
     let x = int((i / gridSize)) * resolution;
     let y = (i % gridSize) * resolution;
     // print(x, (i / gridSize));
-    //stroke(0);
-    noStroke();
+    stroke(0);
     fill(outerShades[i]);
     rect(x, y, resolution);
     noStroke();
