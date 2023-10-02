@@ -16,7 +16,7 @@ let frequencies;
 let offset;
 
 function setup() {
-  canvSize = min(windowWidth, windowHeight);
+  canvSize = max(windowWidth, windowHeight);
 	// canvSize = max(windowWidth, windowHeight);
   origin = createVector(0, 0);
   
