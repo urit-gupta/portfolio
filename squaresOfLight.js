@@ -58,12 +58,6 @@ function setup() {
   
   createCanvas(canvSize, canvSize);
   background(0);
-
-	const parallax = () => {
-  const { scrollY } = window;
-	origin.y += scrollY * 0.04;
-	}
-	window.addEventListener('scroll', parallax);
   
   // createLoop({
   //   duration: TWO_PI,
@@ -81,7 +75,7 @@ function draw() {
   push();
   
   // background(0);
-  translate(origin.x, origin.y);
+  // translate(origin.x, origin.y);
   
   // draw stuff
   
