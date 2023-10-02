@@ -61,7 +61,7 @@ function setup() {
 
 	const parallax = () => {
   const { scrollY } = window;
-	origin.y -= scrollY * 0.4;
+	origin.y += scrollY * 0.04;
 	}
 	window.addEventListener('scroll', parallax);
   
