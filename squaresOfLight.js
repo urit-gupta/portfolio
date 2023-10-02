@@ -61,13 +61,12 @@ function setup() {
   let body = document.body;
   let html_ = document.documentElement;
 
-  let pageHeight = Math.max( body.scrollHeight, body.offsetHeight, 
-                         html_.clientHeight, html_.scrollHeight, html_.offsetHeight );
+  let pageHeight = max(body.scrollHeight, body.offsetHeight, html_.clientHeight, html_.scrollHeight, html_.offsetHeight);
   
   const parallax = () => {
     const { scrollY } = window;
     // origin.y = -(scrollY * 0.4);
-    origin.y = -((scrollY / (pageHeight - windowHeight)) * canvSize * 0.5);
+    origin.y = -((scrollY / (pageHeight - height)) * canvSize * 0.5);
   }
   window.addEventListener('scroll', parallax);
   
@@ -114,7 +113,10 @@ function draw() {
 
 // functions
 
-
+function windowResized() {
+  canvSize = max(windowWidth, windowHeight);
+  resizeCanvas(canvSize, canvSize);
+}
 
 // OKLAB COLORS - DO NOT ALTER UNLESS U KNOW WHAT UR DOIN
 
