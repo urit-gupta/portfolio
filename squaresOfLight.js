@@ -16,8 +16,8 @@ let frequencies;
 let offset;
 
 function setup() {
-  // canvSize = min(windowWidth, windowHeight);
-	canvSize = max(windowWidth-1, windowHeight-1);
+  canvSize = min(windowWidth, windowHeight);
+	// canvSize = max(windowWidth, windowHeight);
   origin = createVector(canvSize * 0.5, canvSize * 0.5);
   
   randomSeed(42);
