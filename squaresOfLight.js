@@ -84,7 +84,8 @@ function draw() {
     let x = int((i / gridSize)) * resolution;
     let y = (i % gridSize) * resolution;
     // print(x, (i / gridSize));
-    stroke(0);
+    //stroke(0);
+    noStroke();
     fill(outerShades[i]);
     rect(x, y, resolution);
     noStroke();
@@ -119,8 +120,8 @@ function parallax() {
   let pageHeight = max(body.scrollHeight, body.offsetHeight, html_.clientHeight, html_.scrollHeight, html_.offsetHeight);
   
   let { scrollY } = window;
-  origin.y = (scrollY / (max(pageHeight - windowHeight, 1))) * canvSize * -0.5;
-  // print(pageHeight, windowHeight, html_.clientHeight);
+  origin.y = -scrollY + (scrollY / (max(pageHeight - windowHeight, 1))) * canvSize * 0.5;
+  print(scrollY, pageHeight, windowHeight);
 }
 
 function windowResized() {
