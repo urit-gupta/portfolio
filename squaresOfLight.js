@@ -58,17 +58,7 @@ function setup() {
   createCanvas(canvSize, canvSize);
   background(0);
   
-  let body = document.body;
-  let html_ = document.documentElement;
-
-  let pageHeight = max(body.scrollHeight, body.offsetHeight, html_.clientHeight, html_.scrollHeight, html_.offsetHeight);
-  
-  const parallax = () => {
-    const { scrollY } = window;
-    // origin.y = -(scrollY * 0.4);
-    origin.y = -((scrollY / (pageHeight - height)) * canvSize * 0.5);
-  }
-  window.addEventListener('scroll', parallax);
+  setParallax();
   
   // createLoop({
   //   duration: TWO_PI,
@@ -113,9 +103,27 @@ function draw() {
 
 // functions
 
+// HTML and Parallax functions
+
+function setParallax() {
+  window.addEventListener('scroll', parallax);
+  window.addEventListener('fullscreenchange', windowResized);
+}
+
+function parallax() {
+  let body = document.body;
+  let html_ = document.documentElement;
+
+  let pageHeight = max(body.scrollHeight, body.offsetHeight, html_.clientHeight, html_.scrollHeight, html_.offsetHeight);
+  
+  let { scrollY } = window;
+  origin.y = -((scrollY / (pageHeight - height)) * canvSize * 0.5);
+}
+
 function windowResized() {
   canvSize = max(windowWidth, windowHeight);
   resizeCanvas(canvSize, canvSize);
+  parallax();
 }
 
 // OKLAB COLORS - DO NOT ALTER UNLESS U KNOW WHAT UR DOIN
