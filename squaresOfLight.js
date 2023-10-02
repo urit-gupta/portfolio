@@ -67,7 +67,7 @@ function setup() {
   const parallax = () => {
     const { scrollY } = window;
     // origin.y = -(scrollY * 0.4);
-    origin.y = -((scrollY / pageHeight) * canvSize * 0.5);
+    origin.y = -((scrollY / (pageHeight - windowHeight)) * canvSize * 0.5);
   }
   window.addEventListener('scroll', parallax);
   
