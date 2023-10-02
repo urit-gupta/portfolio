@@ -106,6 +106,7 @@ function draw() {
 // HTML and Parallax functions
 
 function setParallax() {
+  parallax();
   window.addEventListener('scroll', parallax);
   window.addEventListener('fullscreenchange', windowResized);
 }
