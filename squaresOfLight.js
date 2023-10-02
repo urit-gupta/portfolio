@@ -18,7 +18,7 @@ let offset;
 function setup() {
   canvSize = min(windowWidth, windowHeight);
 	// canvSize = max(windowWidth, windowHeight);
-  origin = createVector(canvSize * 0.5, canvSize * 0.5);
+  origin = createVector(0, 0);
   
   randomSeed(42);
   // noiseSeed(42);
@@ -75,7 +75,7 @@ function draw() {
   push();
   
   // background(0);
-  // translate(origin.x, origin.y);
+  translate(origin.x, origin.y);
   
   // draw stuff
   
@@ -102,7 +102,11 @@ function draw() {
 
 // functions
 
-
+const parallax = () => {
+  const { scrollY } = window;
+	origin.y -= scrollY * 0.4;
+}
+window.addEventListener('scroll', parallax);
 
 // OKLAB COLORS - DO NOT ALTER UNLESS U KNOW WHAT UR DOIN
 
