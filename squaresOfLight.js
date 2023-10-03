@@ -113,6 +113,7 @@ function setParallax() {
 }
 
 function parallax() {
+  if (canvSize < windowHeight) return; // don't bother with parallax
   let body = document.body;
   let html_ = document.documentElement;
 
@@ -120,8 +121,6 @@ function parallax() {
   
   let { scrollY } = window;
   origin.y = (scrollY / (max(pageHeight - windowHeight, 1))) * -(canvSize - windowHeight);
-  // canvSize * 0.5 * (1-(windowHeight / canvSize));
-  // print(scrollY, (scrollY / (max(pageHeight - windowHeight, 1))), origin.y, 0.5 * (1-(windowHeight / canvSize)), pageHeight, windowHeight, canvSize);
 }
 
 function windowResized() {
