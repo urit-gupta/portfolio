@@ -135,7 +135,7 @@
         let currentSketchIndex = 0;
 
         // CSV data with sketch descriptions (replace with your data)
-        const csvData = `fileName,desc,title,subtitle\nhttps://eta-car1nae.github.io/portfolio/squaresOfLight.js,This draws squares of light!,Squares of Light,/or was it dark/`;
+        const csvData = 'sketchData.csv;
 
         // Fetch and parse CSV data
         const csvLines = csvData.split('\n');
@@ -151,6 +151,33 @@
                 };
             }
         }
+
+        const fetchSketchUrls = async () => {
+            try {
+                const response = await fetch('sketchData.csv'); // Replace with your CSV file URL
+                const csvData = await response.text();
+
+                // Parse the CSV data and extract sketch URLs
+                const csvLines = csvData.split('\n');
+                const header = csvLines[0].split(',');
+                const urlColumnIndex = header.indexOf('fileName');
+
+                for (let i = 1; i < csvLines.length; i++) {
+                    const fields = csvLines[i].split(',');
+                    if (fields.length > urlColumnIndex) {
+                        sketchUrls.push(fields[urlColumnIndex].trim());
+                    }
+                }
+
+                if (sketchUrls.length > 0) {
+                    updateSketchFrame();
+                } else {
+                    console.error('No sketch URLs found in the CSV.');
+                }
+            } catch (error) {
+                console.error('Error fetching sketch URLs:', error);
+            }
+        };
 
         function prevSketch() {
             currentSketchIndex = (currentSketchIndex - 1 + sketchUrls.length) % sketchUrls.length;
@@ -192,10 +219,10 @@
                 const regex = /<a href="([^"]+\.(js))">/g;
                 let match;
                 while ((match = regex.exec(data))) {
-                    sketchUrls.push(match[1]);
+                    // sketchUrls.push(match[1]);
                 }
                 if (sketchUrls.length > 0) {
-                    updateSketchFrame();
+                    // updateSketchFrame();
                 }
             })
             .catch(error => console.error('Error fetching sketch URLs:', error));
