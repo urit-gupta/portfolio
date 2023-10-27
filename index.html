@@ -136,7 +136,7 @@
         let currentSketchIndex = 0;
 
         // CSV data with sketch descriptions (replace with your data)
-        const csvData = 'sketchData.csv;
+        const csvData = 'sketchData.csv';
 
         // Fetch and parse CSV data
         const csvLines = csvData.split('\n');
@@ -155,8 +155,7 @@
 
         const fetchSketchUrls = async () => {
             try {
-                const response = await fetch('sketchData.csv'); // Replace with your CSV file URL
-                const csvData = await response.text();
+                const csvData = 'sketchData.csv';
 
                 // Parse the CSV data and extract sketch URLs
                 const csvLines = csvData.split('\n');
