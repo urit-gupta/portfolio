@@ -151,33 +151,14 @@
                     subtitle: fields[3] || ''
                 };
             }
+            if (fields.length > urlColumnIndex) {
+                sketchUrls.push(fields[urlColumnIndex].trim());
+            }
         }
 
-        const fetchSketchUrls = async () => {
-            try {
-                const csvData = 'fileName,desc,title,subtitle\nhttps://eta-car1nae.github.io/portfolio/squaresOfLight.js,This draws squares of light!,Squares of Light,/or was it dark/';
-
-                // Parse the CSV data and extract sketch URLs
-                const csvLines = csvData.split('\n');
-                const header = csvLines[0].split(',');
-                const urlColumnIndex = header.indexOf('fileName');
-
-                for (let i = 1; i < csvLines.length; i++) {
-                    const fields = csvLines[i].split(',');
-                    if (fields.length > urlColumnIndex) {
-                        sketchUrls.push(fields[urlColumnIndex].trim());
-                    }
-                }
-
-                if (sketchUrls.length > 0) {
-                    updateSketchFrame();
-                } else {
-                    console.error('No sketch URLs found in the CSV.');
-                }
-            } catch (error) {
-                console.error('Error fetching sketch URLs:', error);
-            }
-        };
+        if (sketchUrls.length > 0) {
+            updateSketchFrame();
+        }
 
         function prevSketch() {
             currentSketchIndex = (currentSketchIndex - 1 + sketchUrls.length) % sketchUrls.length;
@@ -211,21 +192,6 @@
                 sketchFrame.style.height = sketchHeight + 'px';
             };
         }
-
-        // Fetch a list of JavaScript files in the root folder
-        fetch('./')
-            .then(response => response.text())
-            .then(data => {
-                const regex = /<a href="([^"]+\.(js))">/g;
-                let match;
-                while ((match = regex.exec(data))) {
-                    // sketchUrls.push(match[1]);
-                }
-                if (sketchUrls.length > 0) {
-                    // updateSketchFrame();
-                }
-            })
-            .catch(error => console.error('Error fetching sketch URLs:', error));
     </script>
 
     <!-- Include the 'marked' library for Markdown rendering -->
