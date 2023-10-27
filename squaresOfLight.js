@@ -55,7 +55,7 @@ function setup() {
   createCanvas(canvSize, canvSize);
   background(0);
   
-  setParallax();
+  // setParallax();
   
   // createLoop({
   //   duration: TWO_PI,
@@ -126,7 +126,7 @@ function parallax() {
 function windowResized() {
   canvSize = windowWidth;
   resizeCanvas(canvSize, canvSize);
-  parallax();
+  //parallax();
 }
 
 // OKLAB COLORS - DO NOT ALTER UNLESS U KNOW WHAT UR DOIN
