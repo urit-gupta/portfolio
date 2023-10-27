@@ -6,7 +6,6 @@
     <title>The Art of Code</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"></script>
     <script src="https://unpkg.com/p5.createloop@0.2.8/dist/p5.createloop.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
         /* Page background color */
         body {
@@ -136,7 +135,7 @@
         let currentSketchIndex = 0;
 
         // CSV data with sketch descriptions (replace with your data)
-        const csvData = 'fileName,desc,title,subtitle\nhttps://eta-car1nae.github.io/portfolio/squaresOfLight.js,This draws squares of light!,Squares of Light,/or was it dark/';
+        const csvData = 'fileName,desc,title,subtitle\nsquaresOfLight.js,This draws squares of light!,Squares of Light,/or was it dark/';
 
         // Fetch and parse CSV data
         const csvLines = csvData.split('\n');
@@ -179,7 +178,7 @@
             const title = csvDescriptions[fileName].title || '';
             const subtitle = csvDescriptions[fileName].subtitle || '';
 
-            document.getElementById('description').innerHTML = marked(description); // You need the 'marked' library for markdown rendering
+            document.getElementById('description').innerHTML = description; // You need the 'marked' library for markdown rendering
             document.querySelector('.title-text').textContent = title;
             document.querySelector('.subtitle-text').textContent = subtitle;
 
