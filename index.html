@@ -7,6 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js"></script>
     <script src="https://unpkg.com/p5.createloop@0.2.8/dist/p5.createloop.js"></script>
+    <script src="https://unpkg.com/papaparse@5.4.1/papaparse.min.js"></script>
     <style>
         /* Page background color */
         body {
@@ -136,7 +137,8 @@
         let currentSketchIndex = 0;
 
         // CSV data with sketch descriptions (replace with your data)
-        const csvData = 'sketchData.csv';
+        const csvData = 'fileName,desc,title,subtitle
+https://eta-car1nae.github.io/portfolio/squaresOfLight.js,This draws squares of light!,Squares of Light,/or was it dark/';
 
         // Fetch and parse CSV data
         const csvLines = csvData.split('\n');
@@ -155,7 +157,8 @@
 
         const fetchSketchUrls = async () => {
             try {
-                const csvData = 'sketchData.csv';
+                const csvData = 'fileName,desc,title,subtitle
+https://eta-car1nae.github.io/portfolio/squaresOfLight.js,This draws squares of light!,Squares of Light,/or was it dark/';
 
                 // Parse the CSV data and extract sketch URLs
                 const csvLines = csvData.split('\n');
