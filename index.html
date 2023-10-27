@@ -174,7 +174,7 @@
             const iframe = document.getElementById('sketch-iframe');
             iframe.src = sketchUrls[currentSketchIndex];
 
-            const fileName = sketchUrls[currentSketchIndex].split('/').pop();
+            const fileName = sketchUrls[currentSketchIndex];
             const description = csvDescriptions[fileName].desc || 'Description not available';
             const title = csvDescriptions[fileName].title || '';
             const subtitle = csvDescriptions[fileName].subtitle || '';
