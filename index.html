@@ -183,15 +183,6 @@
             document.getElementById('description').innerHTML = description;
             document.querySelector('.title-text').textContent = title;
             document.querySelector('.subtitle-text').textContent = subtitle;
-
-            iframe.onload = function() {
-                const contentWindow = iframe.contentWindow;
-                const sketchWidth = contentWindow.innerWidth || 300; // Default width if not available
-                const sketchHeight = contentWindow.innerHeight || 300; // Default height if not available
-                const sketchFrame = document.querySelector('.sketch-frame');
-                sketchFrame.style.width = sketchWidth + 'px';
-                sketchFrame.style.height = sketchHeight + 'px';
-            };
         }
     </script>
 </body>
