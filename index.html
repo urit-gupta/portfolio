@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>The Art of Code</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js"></script>
     <script src="https://unpkg.com/p5.createloop@0.2.8/dist/p5.createloop.js"></script>
     <style>
         /* Page background color */
@@ -134,8 +135,9 @@
         let sketchUrls = [];
         let currentSketchIndex = 0;
 
-        // CSV data with sketch descriptions (replace with your data)
-        const csvData = 'fileName,desc,title,subtitle\nsquaresOfLight.js,This draws squares of light!,Squares of Light,/or was it dark/';
+        // CSV data with sketch descriptions
+        const csvData = 'fileName,desc,title,subtitle
+            squaresOfLight.js,This draws squares of light!,Squares of Light,/or was it dark/';
 
         // Fetch and parse CSV data
         const csvLines = csvData.split('\n');
@@ -178,7 +180,7 @@
             const title = csvDescriptions[fileName].title || '';
             const subtitle = csvDescriptions[fileName].subtitle || '';
 
-            document.getElementById('description').innerHTML = description; // You need the 'marked' library for markdown rendering
+            document.getElementById('description').innerHTML = description;
             document.querySelector('.title-text').textContent = title;
             document.querySelector('.subtitle-text').textContent = subtitle;
 
@@ -192,7 +194,5 @@
             };
         }
     </script>
-
-    <!-- Include the 'marked' library for Markdown rendering -->
 </body>
 </html>
