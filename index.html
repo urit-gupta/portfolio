@@ -136,7 +136,8 @@
         let currentSketchIndex = 0;
 
         // CSV data with sketch descriptions
-        const csvData = 'fileName,desc,title,subtitle\nsquaresOfLight.js,This draws squares of light!,Squares of Light,/or was it dark/';
+        const fileReader = new FileReader();
+        const csvData = fileReader.readAsText('sketchData.csv');
 
         // Fetch and parse CSV data
         const csvLines = csvData.split('\n');
@@ -145,7 +146,7 @@
         for (let i = 1; i < csvLines.length; i++) {
             const fields = csvLines[i].split(',');
             if (fields.length === header.length) {
-                csvDescriptions[fields[0]] = {
+                csvDescriptions[fields[0].split('/').pop()] = {
                     desc: fields[1] || 'Description not available',
                     title: fields[2] || '',
                     subtitle: fields[3] || ''
@@ -174,7 +175,7 @@
             const iframe = document.getElementById('sketch-iframe');
             iframe.src = sketchUrls[currentSketchIndex];
 
-            const fileName = sketchUrls[currentSketchIndex];
+            const fileName = sketchUrls[currentSketchIndex].split('/').pop();
             const description = csvDescriptions[fileName].desc || 'Description not available';
             const title = csvDescriptions[fileName].title || '';
             const subtitle = csvDescriptions[fileName].subtitle || '';
@@ -182,6 +183,15 @@
             document.getElementById('description').innerHTML = description;
             document.querySelector('.title-text').textContent = title;
             document.querySelector('.subtitle-text').textContent = subtitle;
+
+            iframe.onload = function() {
+                const contentWindow = iframe.contentWindow;
+                const sketchWidth = contentWindow.innerWidth || 300; // Default width if not available
+                const sketchHeight = contentWindow.innerHeight || 300; // Default height if not available
+                const sketchFrame = document.querySelector('.sketch-frame');
+                sketchFrame.style.width = sketchWidth + 'px';
+                sketchFrame.style.height = sketchHeight + 'px';
+            };
         }
     </script>
 </body>
