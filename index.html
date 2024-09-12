@@ -25,6 +25,7 @@
         /* Customize the sketch frame */
         .sketch-frame {
             display: block;
+            align: center;
             border: 16px solid black; /* Add a black border */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a drop shadow */
             width: 783px; /* Customize the width */
@@ -193,6 +194,7 @@
                 iframe.width = sketchWidth + 'px';
                 iframe.height = sketchHeight + 'px';
                 iframe.style.display = 'block';
+                iframe.style.frameborder = 0;
             };
         }
     </script>
