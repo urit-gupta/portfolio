@@ -16,9 +16,7 @@
 
         /* Customize the main container */
         #sketch-container {
-            display: block;
-            border: 16px solid black; /* Add a black border */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a drop shadow */
+            display: flex;
             padding: 10px; /* Add padding to separate the content from the border */
             position: relative; /* Make it a positioning context for the buttons */
         }
@@ -28,8 +26,8 @@
             display: block;
             border: 16px solid black; /* Add a black border */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a drop shadow */
-            width: 825px; /* Customize the width */
-            height: 825px; /* Customize the height */
+            width: 783px; /* Customize the width */
+            height: 975px; /* Customize the height */
             margin: 10px; /* Customize the margin */
             position: relative;
         }
@@ -188,11 +186,12 @@
 
             iframe.onload = function() {
                 const contentWindow = iframe.contentWindow;
-                const sketchWidth = 825;
-                const sketchHeight = 825;
+                const sketchWidth = 783;
+                const sketchHeight = 975;
                 // const sketchFrame = document.querySelector('.sketch-frame');
                 iframe.width = sketchWidth + 'px';
                 iframe.height = sketchHeight + 'px';
+                iframe.style.display = 'block';
             };
         }
     </script>
