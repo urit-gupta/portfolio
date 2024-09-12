@@ -137,7 +137,7 @@
 
         // CSV data with sketch descriptions
         const fileReader = new FileReader();
-        const csvData = fileReader.readAsText('sketchData.csv');
+        const csvData = fileReader.readAsText(new File([], 'sketchData.csv'));
 
         // Fetch and parse CSV data
         const csvLines = csvData.split('\n');
