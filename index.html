@@ -136,8 +136,8 @@
         let currentSketchIndex = 0;
 
         // CSV data with sketch descriptions
-        const fileReader = new FileReader();
-        const csvData = fileReader.readAsText(new File([], 'sketchData.csv'));
+        // const fileReader = new FileReader();
+        const csvData = 'fileName,desc,title,subtitle\nhttps://editor.p5js.org/eta_car1nae/full/CVmwThnw8,This draws Squares of Light!,Squares of Light,/or was it Dark?/' // fileReader.readAsText(new File([], 'sketchData.csv'));
 
         // Fetch and parse CSV data
         const csvLines = csvData.split('\n');
