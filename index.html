@@ -1,202 +1,69 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>The Art of Code</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js"></script>
-    <script src="https://unpkg.com/p5.createloop@0.2.8/dist/p5.createloop.js"></script>
-    <style>
-        /* Page background color */
-        body {
-            background-color: #F5F1EC;
-            font-family: 'Avenir Light', sans-serif;
-        }
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-        /* Customize the main container */
-        #sketch-container {
-            display: flex;
-            align: center;
-            padding: 10px; /* Add padding to separate the content from the border */
-            position: relative; /* Make it a positioning context for the buttons */
-        }
+    <link id="site-icon" rel="icon" type="image/png" sizes="32x32" href="" />
 
-        /* Customize the sketch frame */
-        .sketch-frame {
-            display: block;
-            align: center;
-            border: 16px solid black; /* Add a black border */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add a drop shadow */
-            width: 783px; /* Customize the width */
-            height: 900px; /* Customize the height */
-            margin: 10px; /* Customize the margin */
-            position: relative;
-        }
+    <title id="html-title"></title>
 
-        /* Title text element */
-        .title-text {
-            font-size: 22px;
-            font-style: italic;
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-        }
+    <!-- Google Fonts B612 Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=B612+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
-        /* Subtitle text element */
-        .subtitle-text {
-            font-size: 15px;
-            font-style: italic;
-            position: absolute;
-            bottom: 35px;
-            left: 10px;
-        }
-
-        /* Navigation buttons */
-        .nav-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 30px;
-            height: 30px;
-            background: #fff;
-            border: 1px solid #000;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .prev-button {
-            left: -50px;
-        }
-
-        .next-button {
-            right: -50px;
-        }
-
-        /* Image at the top */
-        #top-image {
-            display: block;
-            width: auto;
-            max-height: 50px;
-            margin: 20px auto; /* Center the image and add margin from the top */
-        }
-
-        /* Description paragraph */
-        #description {
-            width: 40%; /* Customize the width */
-            float: left;
-            padding: 20px; /* Add padding to separate from the sketch frame */
-        }
-
-        /* Tab bar */
-        #tab-bar {
-            background: #F5F1EC; /* Match the page background color */
-            text-align: center;
-            padding: 10px 0;
-        }
-
-        .tab-button {
-            display: inline-block;
-            background: transparent;
-            border: 3px solid black;
-            color: black;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            margin: 0 10px;
-            font-family: 'Avenir Light', sans-serif;
-        }
-    </style>
-</head>
-<body>
-    <img id="top-image" src="Logo.png" alt="Logo">
-
-    <div id="tab-bar">
-        <a class="tab-button" href="https://theartofcode.wixsite.com/showcase" target="_blank">Gallery</a>
-        <a class="tab-button" href="https://theartofcode.wixsite.com/showcase" target="_blank">About</a>
-        <a class="tab-button" href="https://theartofcode.wixsite.com/showcase" target="_blank">Interactive</a>
-        <a class="tab-button" href="https://theartofcode.wixsite.com/showcase" target="_blank">Licensing</a>
-    </div>
-
-    <div id="sketch-container">
-        <!-- Navigation buttons -->
-        <div class="nav-button prev-button" onclick="prevSketch()">&#9664;</div>
-        <div class="nav-button next-button" onclick="nextSketch()">&#9654;</div>
-
-        <!-- You can add more sketch frames as needed -->
-        <div class="sketch-frame">
-            <iframe src="" id="sketch-iframe"></iframe>
-            <div class="title-text"></div>
-            <div class="subtitle-text"></div>
+    <!-- Load Styles and Script -->
+    <link rel="stylesheet" href="/dist/style.css" />
+    <script defer src="/dist/script.js"></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js"
+    ></script>
+    <script
+      defer
+      src="https://unpkg.com/p5.createloop@0.2.8/dist/p5.createloop.js"
+    ></script>
+  </head>
+  <body>
+    <div style="display: block;">
+        <div id="sketch-container" class="sketch_container">
+            <iframe
+                src=""
+                id="sketch-iframe"
+                class="sketch_container__frame"
+                scrolling="no"
+                style="display: block;"
+            ></iframe>
         </div>
     </div>
+    
+    <header id="site-header" class="header container">
+      <img id="site-logo" class="header__logo" src="" alt="Eta Carinae Logo"></img>
+      <h1 id="site-title" class="header__title">eta_car1nae</h1>
+    </header>
 
-    <p id="description">Description for the current sketch will appear here.</p>
-
-    <script>
-        let sketchUrls = [];
-        let currentSketchIndex = 0;
-
-        // CSV data with sketch descriptions
-        // const fileReader = new FileReader();
-        const csvData = 'fileName,desc,title,subtitle\nhttps://editor.p5js.org/eta_car1nae/full/CVmwThnw8,This draws Squares of Light!,Squares of Light,/or was it Dark?/' // fileReader.readAsText(new File([], 'sketchData.csv'));
-
-        // Fetch and parse CSV data
-        const csvLines = csvData.split('\n');
-        const header = csvLines[0].split(',');
-        const csvDescriptions = {};
-        for (let i = 1; i < csvLines.length; i++) {
-            const fields = csvLines[i].split(',');
-            if (fields.length === header.length) {
-                csvDescriptions[fields[0].split('/').pop()] = {
-                    desc: fields[1] || 'Description not available',
-                    title: fields[2] || '',
-                    subtitle: fields[3] || ''
-                };
-            }
-            if (fields.length > 0) {
-                sketchUrls.push(fields[0].trim());
-            }
-        }
-
-        if (sketchUrls.length > 0) {
-            updateSketchFrame();
-        }
-
-        function prevSketch() {
-            currentSketchIndex = (currentSketchIndex - 1 + sketchUrls.length) % sketchUrls.length;
-            updateSketchFrame();
-        }
-
-        function nextSketch() {
-            currentSketchIndex = (currentSketchIndex + 1) % sketchUrls.length;
-            updateSketchFrame();
-        }
-
-        function updateSketchFrame() {
-            const iframe = document.getElementById('sketch-iframe');
-            iframe.src = sketchUrls[currentSketchIndex];
-
-            const fileName = sketchUrls[currentSketchIndex].split('/').pop();
-            const description = csvDescriptions[fileName].desc || 'Description not available';
-            const title = csvDescriptions[fileName].title || '';
-            const subtitle = csvDescriptions[fileName].subtitle || '';
-
-            document.getElementById('description').innerHTML = description;
-            document.querySelector('.title-text').textContent = title;
-            document.querySelector('.subtitle-text').textContent = subtitle;
-
-            iframe.onload = function() {
-                const contentWindow = iframe.contentWindow;
-                const sketchWidth = 783;
-                const sketchHeight = 900;
-                // const sketchFrame = document.querySelector('.sketch-frame');
-                iframe.width = sketchWidth + 'px';
-                iframe.height = sketchHeight + 'px';
-                iframe.style.display = 'block';
-                iframe.style.frameborder = 0;
-            };
-        }
-    </script>
-</body>
+    <main class="container container__body">
+      <section id="link-tree" class="link_tree">
+        <div id="code-for-sketch-icon" class="link_tree__icon">&lt;/&gt;</div>
+        <h2 id="code-for-sketch-text" class="link_tree__item">Code for this Sketch</h2>
+        <img id="instagram-icon" src="" class="link_tree__icon"></div>
+        <h2 id="instagram-text" class="link_tree__item">Instagram</h2>
+        <img id="github-icon" src="" class="link_tree__icon"></div>
+        <h2 id="github-text" class="link_tree__item">GitHub</h2>
+      </section>
+      <div id="copyright-box" class="copyright_box">
+        <div id="copyright-icon" class="copyright_box__icon">©</div>
+        <h2 id="copyright-text" class="copyright_box__item">&lt;urit_gupta/&gt;</h2>
+      </div>
+    </main>
+  </body>
 </html>
