@@ -32,7 +32,7 @@ The following functionality will be implemented in the future:
 3. Go to gallery button
 4. Remembering which sketch the user is on
 5. Permute sketch button with information about the random state
-6. ~~Clicking on title displays a random sketch (essentially a hard reload)~~ <a style="color: lightgreen">DONE</a>
-7. ~~Clicking on copyright box points to github repo~~ <a style="color: lightgreen">DONE</a>
+6. ~~Clicking on title displays a random sketch (essentially a hard reload)~~ **DONE**
+7. ~~Clicking on copyright box points to github repo~~ **DONE**
 
 ### That's all, folks!
