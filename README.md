@@ -25,12 +25,6 @@ Here's what each site button does:
 
 ## Planned TODOs
 
-<style>
-green {
-  color: lightgreen;
-}
-</style>
-
 The following functionality will be implemented in the future:
 
 1. Accessibility implementations (Aria labels, keyboard-only navigation, theme switching, screen-reader friendly elements, etc.)
@@ -38,7 +32,7 @@ The following functionality will be implemented in the future:
 3. Go to gallery button
 4. Remembering which sketch the user is on
 5. Permute sketch button with information about the random state
-6. ~~Clicking on title displays a random sketch (essentially a hard reload)~~ <green>DONE</green>
-7. ~~Clicking on copyright box points to github repo~~ <green>DONE</green>
+6. ~~Clicking on title displays a random sketch (essentially a hard reload)~~ <a style="color: lightgreen">DONE</a>
+7. ~~Clicking on copyright box points to github repo~~ <a style="color: lightgreen">DONE</a>
 
 ### That's all, folks!
