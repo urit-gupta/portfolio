@@ -1,0 +1,5 @@
+node_modules/
+*.scss
+gulpfile.js
+*.Identifier
+app/
