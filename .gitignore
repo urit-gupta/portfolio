@@ -3,3 +3,6 @@ node_modules/
 gulpfile.js
 *.Identifier
 app/
+project.json
+package.json
+package-lock.json
